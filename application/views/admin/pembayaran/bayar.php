@@ -91,8 +91,7 @@
                     </div>
                     <div class="col-md-auto">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="jumlah_bayar"
-                                value="<?= $pembayaran->nominal ?>">
+                            <input type="text" class="form-control" name="jumlah_bayar" value="<?= $pembayaran->nominal ?>">
                             <?php echo form_error('jumlah_bayar', '<span class="text-danger">', '</span>'); ?>
                         </div>
                     </div>
@@ -111,8 +110,7 @@
 
                     <div class="col-md-auto">
                         <div class="form-group">
-                            <button type="submit" name="submit" class="btn btn-primary btn-lg"><i
-                                    class="fa fa-save"></i> Bayar</button>
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg"><i class="fa fa-save"></i> Bayar</button>
                         </div>
                     </div>
                 </div>
@@ -121,7 +119,7 @@
     </div>
 </div>
 <?=
-	form_close();
+form_close();
 ?>
 
 

@@ -20,8 +20,7 @@
  </a>
 
  <!-- Logout Modal-->
- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+ <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
@@ -48,7 +47,48 @@
  <script src="<?= base_url('assets/js/demo/datatables-demo.js'); ?>"></script>
 
  <!-- <script src="<?= base_url('assets/vendor/bootstrap/bootstrap.min.js') ?>"></script> -->
+ <script>
+     $(document).ready(function() {
+         let makan = 'false';
+         let listrik = 'false';
+         $('.makan').on('click', function() {
+             let checkboxMakan = $(this).attr('id')
+             console.log(checkboxMakan)
+             if ($('#' + checkboxMakan).is(':checked')) {
+                 makan = 'true'
+             } else {
+                 makan = 'false'
+             }
+         })
+         $('.listrik').on('click', function() {
+             let checkboxListrik = $(this).attr('id')
+             console.log(checkboxListrik)
+             if ($('#' + checkboxListrik).is(':checked')) {
+                 listrik = 'true'
+             } else {
+                 listrik = 'false'
+             }
+         })
 
+         $('.bayarSpp').on('click', function() {
+             let id_pembayaran = $(this).data('id');
+             $.ajax({
+                 url: '<?= base_url('admin/pembayaran/bayar/') ?>' + id_pembayaran,
+                 method: 'post',
+                 data: {
+                     listrik,
+                     makan,
+                     id_pembayaran
+                 },
+                 success: function(result) {
+                     console.log(result)
+                     window.location.reload()
+                 }
+             })
+         })
+
+     })
+ </script>
  </body>
 
 

@@ -36,21 +36,26 @@ class Pembayaran extends CI_Controller
 
 	public function bayar($id_pembayaran)
 	{
+
 		$data2 = [
-			'id_pembayaran' => $id_pembayaran,
+			'id_pembayaran' => $this->input->post('id_pembayaran'),
 			'id_petugas' => $this->session->userdata('id_petugas'),
 			'tgl_bayar' => date('Y-m-d'),
+			'makan'		=> $this->input->post('makan'),
+			'listrik'		=> $this->input->post('listrik'),
 			'keterangan' => 'Lunas'
 		];
 		$this->pembayaran_model->update($data2);
 
 		$this->load->library('user_agent');
-		redirect($_SERVER['HTTP_REFERER']);
+		echo $this->input->post('id_pembayaran');
+		// redirect($_SERVER['HTTP_REFERER']);
 	}
 
 
 	public function transaksi($nisn)
 	{
+
 		$siswa = $this->siswa_model->detail($nisn);
 		$kelas = $this->kelas_model->get_all();
 		$spp = $this->spp_model->get_all();
